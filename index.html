@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SNS 이미지 제작기</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Nanum+Brush+Script&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main class="app">
+    <section class="panel">
+      <h1>SNS 이미지 제작기</h1>
+
+      <label>
+        원본 이미지
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/png,image/jpeg"
+        />
+      </label>
+
+      <p id="status">PNG 또는 JPEG 이미지를 불러오세요.</p>
+
+      <hr />
+
+      <label>
+        메인 문구
+        <textarea id="textInput" rows="3">메인 제목</textarea>
+      </label>
+
+      <label>
+        보조 문구
+        <textarea id="subtextInput" rows="3">보조 문구</textarea>
+      </label>
+
+      <label>
+        글자 크기
+        <input
+          type="range"
+          id="fontSizeInput"
+          min="30"
+          max="180"
+          value="90"
+        />
+        <span id="fontSizeValue">90</span>
+      </label>
+
+      <label>
+        폰트
+        <select id="fontFamilyInput">
+          <option value="'Noto Sans KR', sans-serif">Noto Sans KR</option>
+          <option value="'Do Hyeon', sans-serif">Do Hyeon</option>
+          <option value="'Black Han Sans', sans-serif">Black Han Sans</option>
+          <option value="Arial, sans-serif">Arial</option>
+        </select>
+      </label>
+
+      <label>
+        폰트 굵기
+          <select id="fontWeightInput">
+            <option value="400">보통</option>
+            <option value="700" selected>굵게</option>
+            <option value="900">아주 굵게</option>
+          </select>
+      </label>
+
+<label>
+  외곽선 색상
+  <input type="color" id="strokeColorInput" value="#000000" />
+</label>
+
+<label>
+  외곽선 두께
+  <input type="range" id="strokeWidthInput" min="0" max="12" value="4" />
+  <span id="strokeWidthValue">4</span>
+</label>
+
+      <label>
+        글자 색상
+        <input
+          type="color"
+          id="colorInput"
+          value="#ffffff"
+        />
+      </label>
+
+      <label>
+        가로 위치
+        <input
+          type="range"
+          id="xInput"
+          min="0"
+          max="100"
+          value="50"
+        />
+      </label>
+
+      <label>
+        세로 위치
+        <input
+          type="range"
+          id="yInput"
+          min="0"
+          max="100"
+          value="18"
+        />
+      </label>
+
+      <hr />
+
+      <h2>비율</h2>
+
+      <div class="ratio-buttons">
+        <button data-ratio="1:1">1:1</button>
+        <button data-ratio="4:5" class="active">4:5</button>
+        <button data-ratio="9:16">9:16</button>
+      </div>
+
+      <hr />
+
+      <h2>템플릿</h2>
+
+      <label>
+        템플릿 이름
+        <input
+          id="templateName"
+          type="text"
+          placeholder="예: 족발 기본형"
+        />
+      </label>
+
+      <div class="buttons">
+        <button id="saveTemplateBtn">저장</button>
+        <button id="updateTemplateBtn">수정</button>
+        <button id="deleteTemplateBtn">삭제</button>
+      </div>
+
+      <select id="templateSelect">
+        <option value="">저장된 템플릿 선택</option>
+      </select>
+
+      <button id="loadTemplateBtn">
+        선택한 템플릿 불러오기
+      </button>
+
+      <hr />
+
+      <h2>JSON</h2>
+
+      <div class="buttons">
+        <button id="exportJsonBtn">
+          JSON 내보내기
+        </button>
+
+        <button id="importJsonBtn">
+          JSON 가져오기
+        </button>
+      </div>
+
+      <input
+        type="file"
+        id="jsonInput"
+        accept="application/json,.json"
+        hidden
+      />
+
+      <hr />
+
+      <button id="downloadBtn" class="download">
+        이미지 다운로드
+      </button>
+    </section>
+
+    <section class="preview">
+      <canvas id="canvas"></canvas>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
